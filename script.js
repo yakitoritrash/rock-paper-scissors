@@ -1,3 +1,5 @@
+let humanScore = 0;
+let computerScore = 0;
 console.log("Hi!");
 
 function getRandomInt(max) {
@@ -30,18 +32,27 @@ function determineWinner(humanChoice, computerChoice){
         (humanChoice === "Paper" && computerChoice === "Rock") ||
         (humanChoice === "Scissors" && computerChoice === "Paper")
     ) {
+        humanScore++;
         return "Human wins!";
     } else {
+        computerScore++;
         return "Computer wins!";
     }
+
 }
 
 function playGame() {
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-    console.log ("Human chose: " + humanChoice);
-    console.log ("Computer chose: " + computerChoice);
-    console.log(determineWinner(humanChoice, computerChoice))
+    let playAgain = true;
+    while (playAgain) {
+        let humanChoice = getHumanChoice();
+        let computerChoice = getComputerChoice();
+        console.log ("Human chose: " + humanChoice);
+        console.log ("Computer chose: " + computerChoice);
+        console.log(determineWinner(humanChoice, computerChoice))
+        console.log("Human Score: " + humanScore);
+        console.log("Computer Score: " + computerScore);
+        playAgain = confirm("Do you want to go another round?")
+    }
 }
 
 playGame();
